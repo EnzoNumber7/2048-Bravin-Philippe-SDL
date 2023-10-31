@@ -7,12 +7,12 @@ class GameObject
 {
 private:
 	SDL_Texture* g_texture;
-	SDL_Renderer* g_renderer;
+	SDL_Rect rect;
 public :
 	GameObject();
 	SDL_Texture* Get_Texture();
-	SDL_Renderer* Get_Renderer();
-	void SurfaceAndTexture(const char * way);
+	void SurfaceAndTexture(const char * way, SDL_Renderer* renderer);
+	void queryTextureAndRenderCopy(SDL_Window* window, SDL_Renderer* renderer, int placementX, int placementY , const char* way, int windowWidth, int windowHeight, int screen);
 	~GameObject();
 };
 

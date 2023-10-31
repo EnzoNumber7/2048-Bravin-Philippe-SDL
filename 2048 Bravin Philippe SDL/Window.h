@@ -3,10 +3,13 @@
 #include "GameObject.h"
 class Window : GameObject {
 private:
-	int windowWidth;
-	int windowHeight;
+	SDL_Window* w_window;
+	SDL_Renderer* w_renderer;
+	bool run;
+
 public:
 	Window();
-	void queryTextureAndRenderCopy(SDL_Rect rect, SDL_Window* window, int placementX, int placementY, int screen);
 	~Window();
+	
+	void Init(const char* title, int width, int height);
 }; 
