@@ -1,15 +1,18 @@
 #pragma once
 #include <SDL.h>
-#include "GameObject.h"
-class Window : GameObject {
+
+class Window {
 private:
 	SDL_Window* w_window;
 	SDL_Renderer* w_renderer;
-	bool run;
 
 public:
 	Window();
 	~Window();
+
+	void Update();
+
+	SDL_Renderer* Get_Renderer();
 	
-	void Init(const char* title, int width, int height);
-}; 
+	void Clear();
+};

@@ -72,7 +72,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(ProjectDir)SDL2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(ProjectDir)SDL2\lib\x86</LibraryPath>
+    <LibraryPath>$(ProjectDir)SDL2\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -132,11 +132,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\2048 Bravin Philippe\2048 Bravin Philippe\tab.cpp" />
+    <ClCompile Include="..\..\2048 Bravin Philippe\2048 Bravin Philippe\tuile.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\2048 Bravin Philippe\2048 Bravin Philippe\tab.h" />
+    <ClInclude Include="..\..\2048 Bravin Philippe\2048 Bravin Philippe\tuile.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
