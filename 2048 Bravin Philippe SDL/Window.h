@@ -13,6 +13,5 @@ public:
 	void Update();
 
 	SDL_Renderer* Get_Renderer();
-	
 	void Clear();
 };

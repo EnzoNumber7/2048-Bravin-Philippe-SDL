@@ -7,22 +7,32 @@
 using namespace std;
 
 
-GameObject::GameObject(int posX, int posY, int width, int height, const char* fileName)
+
+GameObject::GameObject(int posX, int posY, int width, int height)
 {
-	o_posX = posX;
-	o_posY = posY;
 	o_width = width;
 	o_height = height;
 	o_Texture = NULL;
-	o_Rect.x = o_posX;
-	o_Rect.y = o_posY;
+	o_Rect.x = posX;
+	o_Rect.y = posY;
 	o_Rect.w = o_width;
 	o_Rect.h = o_height;
-	o_Image = fileName;
+	o_Image = "img/2.bmp";
+
+	// Génération Aléatoire de la valeur entre 2 et 4
+	int tab[10] = { 2,2,2,2,2,2,2,2,2,4 };
+	int i = rand() % 10;
+	o_value = tab[i];
+	if (tab[i]==2){
+		o_Image = "img/2.bmp";
+	}
+	else if (tab[i]==4){
+		o_Image = "img/4.bmp";
+	}
+	o_merge = false;
 }
 
 void GameObject::Draw(SDL_Renderer* renderer) {
-
 	SDL_Surface* Surface = SDL_LoadBMP(o_Image);
 	if (Surface == NULL) {
 		cout << "Error SDL_LoadBMP :" << SDL_GetError() << endl;
@@ -45,67 +55,37 @@ void GameObject::Draw(SDL_Renderer* renderer) {
 	SDL_RenderPresent(renderer);
 }
 
-void GameObject::Move(int posX, int posY, SDL_Renderer* renderer) {
-	SDL_DestroyTexture(o_Texture);
+void GameObject::ObjectMove(int posX, int posY) {
+	DestroyTexture();
 	o_Rect.x = posX;
 	o_Rect.y = posY;
+}
+
+void GameObject::DestroyTexture() {
+	SDL_DestroyTexture(o_Texture);
 }
 
 void GameObject::ChangeImage(const char* fileName) {
 	o_Image = fileName;
 }
-
-/*void GameObject::Print_Tab()
+int GameObject::Get_Value()
 {
-	for (int i = 0; i < 4; i++) {
-		for (int j = 0; j < 4; j++) {
-			if (t_valueTab[i][j] == 2) { }
-			else if (t_valueTab[i][j] == 4) { }
-			else if (t_valueTab[i][j] == 8) {; }
-			else if (t_valueTab[i][j] == 16) { }
-			else if (t_valueTab[i][j] == 32) { }
-			else if (t_valueTab[i][j] == 64) { }
-			else if (t_valueTab[i][j] == 128) { }
-			else if (t_valueTab[i][j] == 256) { }
-			else if (t_valueTab[i][j] == 512) { }
-			else if (t_valueTab[i][j] == 1024) { }
-			else if (t_valueTab[i][j] == 2048) { }
-		}
-		cout << endl;
-	}
-	cout << endl;
-}*/
-
-/*SDL_Texture* GameObject::Get_Texture() {
-	return(g_texture);
+	return (o_value);
 }
-void GameObject::SurfaceAndTexture(const char * way, SDL_Renderer* renderer)
+
+bool GameObject::Get_Merge()
 {
-	SDL_Surface* texture = SDL_LoadBMP(way);
-	g_texture = SDL_CreateTextureFromSurface(renderer, texture);
-	SDL_FreeSurface(texture);
+	return(o_merge);
 }
-void GameObject::queryTextureAndRenderCopy(SDL_Window* window, SDL_Renderer* renderer, int placementX, int placementY, const char* way ,int windowWidth,int windowHeight, int screen) {
-	SurfaceAndTexture(way,renderer);
-	if (SDL_QueryTexture(g_texture, NULL, NULL, &rect.w, &rect.h) != 0) {
-		Error("Impossible de charger la texture");
-		Destroy(window, renderer);
-	}
-	rect.x = placementX;
-	rect.y = placementY;
-	if (screen) {
-		rect.w = windowWidth;
-		rect.h = windowHeight;
-	}
 
-	if (!screen) {
-		rect.w = (windowWidth / 4);
-		rect.h = (windowHeight / 4);
-	}
-	if ((SDL_RenderCopy,renderer, g_texture, NULL, &rect) != 0) {
-		Error("Impossible d'afficher l'image");
-		Destroy(window,renderer);
-	}
-}*/
+void GameObject::Change_Value(int New_value)
+{
+	o_value = New_value;
+}
 
+void GameObject::Change_Bool(bool new_merge)
+{
+	o_merge = new_merge;
+}
 
+GameObject::~GameObject(){}

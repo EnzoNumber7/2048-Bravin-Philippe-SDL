@@ -132,16 +132,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\2048 Bravin Philippe\2048 Bravin Philippe\tab.cpp" />
-    <ClCompile Include="..\..\2048 Bravin Philippe\2048 Bravin Philippe\tuile.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="tab.cpp" />
+    <ClCompile Include="tuile.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\2048 Bravin Philippe\2048 Bravin Philippe\tab.h" />
-    <ClInclude Include="..\..\2048 Bravin Philippe\2048 Bravin Philippe\tuile.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="tab.h" />
+    <ClInclude Include="tuile.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>

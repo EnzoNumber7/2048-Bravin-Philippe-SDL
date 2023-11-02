@@ -9,7 +9,6 @@ private:
 public:
 
 	Tile();
-	Tile(int value);
 
 	int Get_Value();
 	bool Get_Merge();

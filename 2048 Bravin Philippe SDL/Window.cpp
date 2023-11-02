@@ -38,6 +38,3 @@ SDL_Renderer* Window::Get_Renderer() {
 void Window::Clear() {
 	SDL_RenderClear(w_renderer);
 }
-
-
-

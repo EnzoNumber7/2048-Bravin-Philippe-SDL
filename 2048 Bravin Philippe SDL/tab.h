@@ -1,21 +1,21 @@
 #pragma once
-#include "tuile.h"
+#include "GameObject.h"
 #include <string>
 using namespace std;
 
-class Tab : Tile
+class Tab
 {
 private:
-	Tile* t_tab[4][4];
+	GameObject* t_tab[4][4];
 	int t_valueTab[4][4];
 
 public:
 
 	Tab();
-	Tab(string line1, string line2, string line3, string line4);
 
-	void Print_Tab();
-	void Create_Tiles();
+	void Print_Tab(SDL_Renderer* renderer);
+	void Print_Tab2();
+	void Create_Object();
 	int Move_Tiles_Left();
 	int Move_Tiles_Right();
 	int Move_Tiles_Up();

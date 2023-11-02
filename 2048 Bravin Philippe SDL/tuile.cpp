@@ -15,12 +15,6 @@ Tile::Tile()
 	t_merge = false;
 }
 
-Tile::Tile(int value) 
-{
-	t_value = value;
-	t_merge = false;
-}
-
 int Tile::Get_Value()
 {
 	return (t_value);
