@@ -135,13 +135,11 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="tab.cpp" />
-    <ClCompile Include="tuile.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="tab.h" />
-    <ClInclude Include="tuile.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
