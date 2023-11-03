@@ -10,6 +10,7 @@ public:
 	Window();
 	~Window();
 
+	void DrawBgFg(const char* file);
 	void Update();
 
 	SDL_Renderer* Get_Renderer();

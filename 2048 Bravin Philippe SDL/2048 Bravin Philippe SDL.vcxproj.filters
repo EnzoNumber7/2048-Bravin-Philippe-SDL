@@ -24,10 +24,10 @@
     <ClCompile Include="Window.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\2048 Bravin Philippe\2048 Bravin Philippe\tab.cpp">
+    <ClCompile Include="tab.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\2048 Bravin Philippe\2048 Bravin Philippe\tuile.cpp">
+    <ClCompile Include="tuile.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,10 +38,10 @@
     <ClInclude Include="Window.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\2048 Bravin Philippe\2048 Bravin Philippe\tab.h">
+    <ClInclude Include="tab.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\2048 Bravin Philippe\2048 Bravin Philippe\tuile.h">
+    <ClInclude Include="tuile.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>

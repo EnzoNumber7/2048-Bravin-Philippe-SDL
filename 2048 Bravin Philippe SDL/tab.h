@@ -24,6 +24,7 @@ public:
 	void Reset_Bool();
 	void Delete_Tiles();
 	void Delete_Tile(int pos_X,int pos_Y);
+	void Delete_Tab();
 	bool Win();
 	bool Loose();
 

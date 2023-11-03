@@ -1,6 +1,7 @@
 #include "Window.h"
 #include <iostream>
 #include <stdlib.h>
+#include <SDL_image.h>
 
 using namespace std;
 
@@ -19,6 +20,36 @@ Window::Window() {
 		cout << "Renderer not created" << SDL_GetError() << endl;
 		exit(1);
 	}
+}
+
+void Window::DrawBgFg(const char * file){
+	SDL_Surface* Surface = IMG_Load(file);
+	if (Surface == NULL) {
+		cout << "Error SDL_LoadBMP :" << SDL_GetError() << endl;
+		exit(1);
+	}
+
+	SDL_Texture* Texture;
+	SDL_Rect Rect;
+	Rect.w = 900;
+	Rect.h = 900;
+	Rect.x = 0;
+	Rect.y = 0;
+
+	Texture = SDL_CreateTextureFromSurface(w_renderer, Surface);
+	if (Texture == NULL)
+	{
+		cout << "Error SDL_CreateTextureFromSurface :" << SDL_GetError() << endl;
+		exit(1);
+	}
+
+	SDL_FreeSurface(Surface);
+
+	SDL_QueryTexture(Texture, NULL, NULL, &Rect.w, &Rect.h);
+
+	SDL_RenderCopy(w_renderer, Texture, NULL, &Rect);
+
+	SDL_RenderPresent(w_renderer);
 }
 
 Window::~Window() {

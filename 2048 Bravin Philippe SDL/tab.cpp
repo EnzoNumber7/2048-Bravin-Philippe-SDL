@@ -30,26 +30,45 @@ void Tab::Print_Tab(SDL_Renderer* renderer)
 {
 	for (int i = 0; i < 4 ; i++) {
 		for (int j = 0; j < 4 ; j++) {
-			if (t_tab[j][i] != NULL) {
-				t_tab[j][i]->Draw(renderer);
+			if (t_tab[i][j] != NULL) {
+				
+				if (t_valueTab[i][j] == 2) {
+					t_tab[i][j]->Draw(renderer, "2048 Bravin Philippe SDL/img/2.png");
+				}
+				else if (t_valueTab[i][j] == 4) {
+					t_tab[i][j]->Draw(renderer, "2048 Bravin Philippe SDL/img/4.png");
+				}
+				else if (t_valueTab[i][j] == 8) {
+					t_tab[i][j]->Draw(renderer, "2048 Bravin Philippe SDL/img/8.png");
+				}
+				else if (t_valueTab[i][j] == 16) {
+					t_tab[i][j]->Draw(renderer, "2048 Bravin Philippe SDL/img/16.png");
+				}
+				else if (t_valueTab[i][j] == 32) {
+					t_tab[i][j]->Draw(renderer, "2048 Bravin Philippe SDL/img/32.png");
+				}
+				else if (t_valueTab[i][j] == 64) {
+					t_tab[i][j]->Draw(renderer, "2048 Bravin Philippe SDL/img/64.png");
+				}
+				else if (t_valueTab[i][j] == 128) {
+					t_tab[i][j]->Draw(renderer, "2048 Bravin Philippe SDL/img/128.png");
+				}
+				else if (t_valueTab[i][j] == 256) {
+					t_tab[i][j]->Draw(renderer, "2048 Bravin Philippe SDL/img/256.png");
+				}
+				else if (t_valueTab[i][j] == 512) {
+					t_tab[i][j]->Draw(renderer, "2048 Bravin Philippe SDL/img/512.png");
+				}
+				else if (t_valueTab[i][j] == 1024) {
+					t_tab[i][j]->Draw(renderer, "2048 Bravin Philippe SDL/img/1024.png");
+				}
+				else if (t_valueTab[i][j] == 2048) {
+					t_tab[i][j]->Draw(renderer, "2048 Bravin Philippe SDL/img/2048.png");
+				}
 			}
 			
 		}
 	}
-}
-void Tab::Print_Tab2()
-{
-	for (int i = 0; i < 4; i++) {
-		for (int j = 0; j < 4; j++) {
-			if (t_valueTab[i][j] == 0) { cout << "|    |"; }
-			else if (t_valueTab[i][j] < 10) { cout << "|   " << CYN << t_valueTab[i][j] << RESET << "|"; }
-			else if (t_valueTab[i][j] < 100) { cout << "|  " << GRN << t_valueTab[i][j] << RESET << "|"; }
-			else if (t_valueTab[i][j] < 1000) { cout << "| " << RED << t_valueTab[i][j] << RESET << "|"; }
-			else { cout << "|" << MAG << t_valueTab[i][j] << RESET << "|"; }
-		}
-		cout << endl;
-	}
-	cout << endl;
 }
 
 void Tab::Create_Object()
@@ -62,7 +81,7 @@ void Tab::Create_Object()
 	}
 	else
 	{
-		t_tab[X][Y] = new GameObject(Y*160,X*160,160,160);
+		t_tab[X][Y] = new GameObject(96+Y*176,128+X*176,96,128);
 		t_valueTab[X][Y] = t_tab[X][Y]->Get_Value();
 	}	
 }
@@ -79,7 +98,7 @@ int Tab::Move_Tiles_Left()
 					t_valueTab[i][j] = t_valueTab[i][j + 1];
 					t_valueTab[i][j + 1] = 0;
 					nb_move += 1;
-					t_tab[i][j]->ObjectMove(j * 160, i * 160);
+					t_tab[i][j]->ObjectMove(96 +j * 176, 128 +i * 176);
 					return Move_Tiles_Left() + nb_move;
 				}
 				else if (t_valueTab[i][j] == t_valueTab[i][j + 1] and t_tab[i][j]->Get_Merge() == false and t_tab[i][j + 1]->Get_Merge() == false){ // Si la case ij et la case a droite on la même valeur et qu'elles n'ont jamais fusionné
@@ -106,7 +125,7 @@ int Tab::Move_Tiles_Right()
 					t_valueTab[i][j - 1] = 0;
 
 					nb_move += 1;
-					t_tab[i][j]->ObjectMove(j * 160, i * 160);
+					t_tab[i][j]->ObjectMove(96 + j * 176, 128 + i * 176);
 					return Move_Tiles_Right() + nb_move;
 				}
 				if (t_valueTab[i][j] == t_valueTab[i][j - 1] and t_tab[i][j]->Get_Merge() == false and t_tab[i][j - 1]->Get_Merge() == false) {
@@ -133,7 +152,7 @@ int Tab::Move_Tiles_Up()
 					t_valueTab[i + 1][j] = 0;
 
 					nb_move += 1;
-					t_tab[i][j]->ObjectMove(j * 160, i * 160);
+					t_tab[i][j]->ObjectMove(96 + j * 176, 128 + i * 176);
 					return Move_Tiles_Up() + nb_move;
 				}
 				else if (t_valueTab[i + 1][j] == t_valueTab[i][j] and t_tab[i][j]->Get_Merge() == false and t_tab[i + 1][j]->Get_Merge() == false) {
@@ -158,10 +177,9 @@ int Tab::Move_Tiles_Down()
 					t_tab[i - 1][j] = NULL;
 					t_valueTab[i][j] = t_valueTab[i - 1][j];
 					t_valueTab[i - 1][j] = 0;
-					t_tab[i][j]->ObjectMove(j * 160, i * 160);
 
 					nb_move += 1;
-					t_tab[i][j]->ObjectMove(j * 160, i * 160);
+					t_tab[i][j]->ObjectMove(96 + j * 176, 128 + i * 176);
 					return Move_Tiles_Down() + nb_move;
 				}
 				else if (t_valueTab[i - 1][j] == t_valueTab[i][j] and t_tab[i][j]->Get_Merge() == false and t_tab[i - 1][j]->Get_Merge() == false) {
@@ -197,36 +215,6 @@ void Tab::Merge_Tiles(int direction, int value, int pos_X, int pos_Y)
 		Delete_Tile(pos_X - 1, pos_Y);
 		t_tab[pos_X][pos_Y]->Change_Value(value * 2);
 		t_valueTab[pos_X][pos_Y] = value * 2;
-	}
-	if (value * 2 == 4){
-		t_tab[pos_X][pos_Y]->ChangeImage("img/4.bmp");
-	}
-	else if (value * 2 == 8) {
-		t_tab[pos_X][pos_Y]->ChangeImage("img/8.bmp");
-	}
-	else if (value * 2 == 16) {
-		t_tab[pos_X][pos_Y]->ChangeImage("img/16.bmp");
-	}
-	else if (value * 2 == 32) {
-		t_tab[pos_X][pos_Y]->ChangeImage("img/32.bmp");
-	}
-	else if (value * 2 == 64) {
-		t_tab[pos_X][pos_Y]->ChangeImage("img/64.bmp");
-	}
-	else if (value * 2 == 128) {
-		t_tab[pos_X][pos_Y]->ChangeImage("img/128.bmp");
-	}
-	else if (value * 2 == 256) {
-		t_tab[pos_X][pos_Y]->ChangeImage("img/256.bmp");
-	}
-	else if (value * 2 == 512) {
-		t_tab[pos_X][pos_Y]->ChangeImage("img/512.bmp");
-	}
-	else if (value * 2 == 1024) {
-		t_tab[pos_X][pos_Y]->ChangeImage("img/1024.bmp");
-	}
-	else if (value * 2 == 2048) {
-		t_tab[pos_X][pos_Y]->ChangeImage("img/2048.bmp");
 	}
 }
 
@@ -314,6 +302,19 @@ void Tab::Delete_Tile(int pos_X, int pos_Y)
 	delete(t_tab[pos_X][pos_Y]);
 	t_valueTab[pos_X][pos_Y] = 0;
 	
+}
+void Tab::Delete_Tab()
+{
+	for (int i = 0; i < 4; i++) {
+		for (int j = 0; j < 4; j++) {
+			if (t_tab[i][j] != NULL) {
+				t_tab[i][j]->DestroyTexture();
+				delete(t_tab[i][j]);
+				t_valueTab[i][j] = 0;
+			}
+		}
+	}
+
 }
 
 // ---------- TEST ---------- //

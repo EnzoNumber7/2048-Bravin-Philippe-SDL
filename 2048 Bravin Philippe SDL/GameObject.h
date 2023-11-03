@@ -20,7 +20,7 @@ private:
 public:
 	GameObject(int posX, int posY, int width, int height);
 
-	void Draw(SDL_Renderer* renderer);
+	void Draw(SDL_Renderer* renderer, const char* filename);
 
 	void ObjectMove(int posX, int posY);
 	void ChangeImage(const char* fileName);
