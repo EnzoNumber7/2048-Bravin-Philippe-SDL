@@ -65,9 +65,6 @@ void GameObject::DestroyTexture() {
 	SDL_DestroyTexture(o_Texture);
 }
 
-void GameObject::ChangeImage(const char* fileName) {
-	o_Image = "2048 Bravin Philippe SDL/img/2.png";
-}
 int GameObject::Get_Value()
 {
 	return (o_value);

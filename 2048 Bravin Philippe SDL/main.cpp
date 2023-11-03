@@ -24,7 +24,7 @@ int main(int argc, char** argv) {
 	screen->DrawBgFg("2048 Bravin Philippe SDL/img/Foreground.bmp");
 	Game->Create_Object();
 	Game->Create_Object();
-	Game->Print_Tab(screen->Get_Renderer());
+	Game->Print_Game(screen->Get_Renderer());
 
 	while (run) {
 
@@ -34,7 +34,7 @@ int main(int argc, char** argv) {
 			Game->Delete_Tab();
 			screen->DrawBgFg("2048 Bravin Philippe SDL/img/Background.bmp");
 			screen->DrawBgFg("2048 Bravin Philippe SDL/img/WinScreen.png");
-			Game->Print_Tab(screen->Get_Renderer());
+			Game->Print_Game(screen->Get_Renderer());
 		}
 		if (Game->Loose()) {
 			screen->Clear();
@@ -42,13 +42,12 @@ int main(int argc, char** argv) {
 			Game->Delete_Tab();
 			screen->DrawBgFg("2048 Bravin Philippe SDL/img/Background.bmp");
 			screen->DrawBgFg("2048 Bravin Philippe SDL/img/LoseScreen.png");
-			Game->Print_Tab(screen->Get_Renderer());
+			Game->Print_Game(screen->Get_Renderer());
 		}
 
 		
 		int move = 0;
 		ticksA = SDL_GetTicks();
-		delta = ticksA - ticksB;
 		SDL_Event event;
 		while (SDL_PollEvent(&event) != 0) {
 			switch (event.type) {
@@ -64,7 +63,7 @@ int main(int argc, char** argv) {
 						Game->Create_Object();
 						screen->DrawBgFg("2048 Bravin Philippe SDL/img/Background.bmp");
 						screen->DrawBgFg("2048 Bravin Philippe SDL/img/Foreground.bmp");
-						Game->Print_Tab(screen->Get_Renderer());
+						Game->Print_Game(screen->Get_Renderer());
 					}
 					screen->Update();
 				}
@@ -76,7 +75,7 @@ int main(int argc, char** argv) {
 						Game->Create_Object();
 						screen->DrawBgFg("2048 Bravin Philippe SDL/img/Background.bmp");
 						screen->DrawBgFg("2048 Bravin Philippe SDL/img/Foreground.bmp");
-						Game->Print_Tab(screen->Get_Renderer());
+						Game->Print_Game(screen->Get_Renderer());
 					}
 					screen->Update();
 				}
@@ -88,7 +87,7 @@ int main(int argc, char** argv) {
 						Game->Create_Object();
 						screen->DrawBgFg("2048 Bravin Philippe SDL/img/Background.bmp");
 						screen->DrawBgFg("2048 Bravin Philippe SDL/img/Foreground.bmp");
-						Game->Print_Tab(screen->Get_Renderer());
+						Game->Print_Game(screen->Get_Renderer());
 					}
 					screen->Update();
 				}
@@ -100,7 +99,7 @@ int main(int argc, char** argv) {
 						Game->Create_Object();
 						screen->DrawBgFg("2048 Bravin Philippe SDL/img/Background.bmp");
 						screen->DrawBgFg("2048 Bravin Philippe SDL/img/Foreground.bmp");
-						Game->Print_Tab(screen->Get_Renderer());
+						Game->Print_Game(screen->Get_Renderer());
 					}
 					screen->Update();
 				}
@@ -110,13 +109,14 @@ int main(int argc, char** argv) {
 					screen->DrawBgFg("2048 Bravin Philippe SDL/img/Foreground.bmp");
 					Game->Create_Object();
 					Game->Create_Object();
-					Game->Print_Tab(screen->Get_Renderer());
+					Game->Print_Game(screen->Get_Renderer());
 					winLose = false;
 				}
 				break;
 			}
 		}
-		if (delta > 1000 / 60.0)
+		delta = ticksA - ticksB;
+		if (delta > 1000 / 120)
 		{
 			std::cout << "fps: " << 1000 / delta << std::endl;
 

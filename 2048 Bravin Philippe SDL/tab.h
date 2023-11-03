@@ -13,8 +13,8 @@ public:
 
 	Tab();
 
-	void Print_Tab(SDL_Renderer* renderer);
-	void Print_Tab2();
+	void Print_Game(SDL_Renderer* renderer);
+	void Print_Game2();
 	void Create_Object();
 	int Move_Tiles_Left();
 	int Move_Tiles_Right();

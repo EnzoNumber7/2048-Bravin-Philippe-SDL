@@ -23,7 +23,6 @@ public:
 	void Draw(SDL_Renderer* renderer, const char* filename);
 
 	void ObjectMove(int posX, int posY);
-	void ChangeImage(const char* fileName);
 	void DestroyTexture();
 
 	int Get_Value();

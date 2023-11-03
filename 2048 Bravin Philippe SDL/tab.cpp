@@ -26,7 +26,7 @@ Tab::Tab()
 
 // ---------- METHODE ---------- //
 
-void Tab::Print_Tab(SDL_Renderer* renderer)
+void Tab::Print_Game(SDL_Renderer* renderer)
 {
 	for (int i = 0; i < 4 ; i++) {
 		for (int j = 0; j < 4 ; j++) {
